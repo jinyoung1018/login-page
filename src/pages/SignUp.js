@@ -37,6 +37,18 @@ const container = document.getElementById('container')
                  <i className='bx bxs-lock-alt'></i>
                  <input type="password" placeholder="Confirm password"/>
                </div>
+               <div className="input-group">
+                 <i className='bx bxs-lock-alt'></i>
+                 <input type="text" placeholder="Nick name"/>
+               </div>
+               <div className="input-group">
+                 <i className='bx bxs-lock-alt'></i>
+                 <input type="number" placeholder="Phone number"/>
+               </div>
+               <div className="input-group">
+                 <i className='bx bxs-lock-alt'></i>
+                 <input type="text" placeholder="Birthday"/>
+               </div>
                <button>
                  Sign up
                </button>
@@ -61,7 +73,7 @@ const container = document.getElementById('container')
        <!-- CONTENT SECTION --> */}
        <div className="row content-row">
          {/* <!-- SIGN IN CONTENT --> */}
-         <div className="col align-items-center flex-col">
+         {/* <div className="col align-items-center flex-col">
            <div className="text sign-in">
              <h2>
                Welcome
@@ -71,7 +83,7 @@ const container = document.getElementById('container')
            <div className="img sign-in">
        
            </div>
-         </div>
+         </div> */}
          {/* <!-- END SIGN IN CONTENT -->
          <!-- SIGN UP CONTENT --> */}
          <div className="col align-items-center flex-col">
