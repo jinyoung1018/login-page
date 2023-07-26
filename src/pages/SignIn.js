@@ -1,40 +1,58 @@
 import { useNavigate } from "react-router-dom";
+import {  useState } from "react";
+
 
 
 const SignIn = ()=>{
-    // let container = document.getElementById('container')
-  
-
-//     const toggle = () => {
-//      container.classList.toggle('sign-in')
-//      container.classList.toggle('sign-up')
-//    }
-   
-//    setTimeout(() => {
-//      container.classList.add('sign-in')
-//    }, 200)
    
    const navigate = useNavigate();
+
+   const[email, setEmail] = useState('');
+   const[password, setPassword] = useState('');
+
+   const emailChange = (e) =>{
+    setEmail(e.target.value);    
+   };
+
+   const passwordChange = (e) =>{
+    setPassword(e.target.value);    
+   }
+
+   const handleSignIn = () =>{
+
+    
+    if(email.length < 1){
+        alert('이메일은 필수 입력 사항입니다.');
+        return;
+    }
+    if(password.length < 1){
+        alert('비밀번호는 필수 입력 사항입니다.');
+        return;
+    }
+    
+
+    console.log( email, password);
+   }
+
+
 
      return (
        <div className="App">
         <div id="container" className="container">
-       {/* <!-- FORM SECTION --> */}
        <div className="row">
         
-         {/* <!-- SIGN IN -->  */}
          <div className="col align-items-center flex-col sign-in">
            <div className="form-wrapper align-items-center">
              <div className="form sign-in">
                <div className="input-group">
                  <i className='bx bxs-user'></i>
-                 <input type="text" placeholder="Email"/>
+                 <input type="text" placeholder="Email" value={email} onChange={emailChange}/>
                </div>
                <div className="input-group">
                  <i className='bx bxs-lock-alt'></i>
-                 <input type="password" placeholder="Password"/>
+                 <input type="password" placeholder="Password" value={password} onChange={passwordChange}/>
                </div>
-               <button>
+               <button onClick={handleSignIn}>
                  Sign in
                </button>
                <p>
@@ -56,12 +74,10 @@ const SignIn = ()=>{
        
            </div>
          </div>
-         {/* <!-- END SIGN IN --> */}
+       
        </div>
-       {/* <!-- END FORM SECTION -->
-       <!-- CONTENT SECTION --> */}
+     
        <div className="row content-row">
-         {/* <!-- SIGN IN CONTENT --> */}
          <div className="col align-items-center flex-col">
            <div className="text sign-in">
              <h2>
@@ -73,7 +89,6 @@ const SignIn = ()=>{
        
            </div>
          </div>
-          {/* <!-- END SIGN IN CONTENT --> */}
         
        </div>
      </div>

@@ -1,62 +1,121 @@
-const SignUp = () =>{
-const container = document.getElementById('container')
-  
+import { useNavigate } from "react-router-dom";
+import {  useState } from "react";
 
-//     const toggle = () => {
-//      container.classList.toggle('sign-in')
-//      container.classList.toggle('sign-up')
-//    }
+
+const SignUp = () =>{
+    
+
+const navigate = useNavigate();
+
+const[username, setUsername] = useState('');
+const[email, setEmail] = useState('');
+const[password, setPassword] = useState('');
+const[checkPassword, setCheckPassword] = useState('');
+const[nickname, setNickname] = useState('');
+const[phone, setPhone] = useState('');
+const[birthday, setBirthday] = useState('');
+
+
+const usernameChange = (e) =>{
+    setUsername(e.target.value);    
+   };
+
+const emailChange = (e) =>{
+    setEmail(e.target.value);    
+   };
+
+const passwordChange = (e) =>{
+    setPassword(e.target.value);    
+   };
+
+const checkPasswordChange = (e) =>{
+    setCheckPassword(e.target.value);    
+   }
+
+const nicknameChange = (e) =>{
+    setNickname(e.target.value);    
+   };
+
+const phoneChange = (e) =>{
+    setPhone(e.target.value);    
+   };
+
+const birthdayChange = (e) =>{
+    setBirthday(e.target.value);    
+   }
+
+const handleSignup = () =>{
+
+    if(username.length < 1){
+        alert('이름은 필수 입력 사항입니다.');
+        return;
+    }
+    if(email.length < 1){
+        alert('이메일은 필수 입력 사항입니다.');
+        return;
+    }
+    if(password.length < 1){
+        alert('비밀번호는 필수 입력 사항입니다.');
+        return;
+    }
+    if(checkPassword.length < 1){
+        alert('비밀번호 확인은 필수 입력 사항입니다.');
+        return;
+    }
+
+    if(password != checkPassword){
+        alert('비밀번호가 일치하지않습니다.');
+        return;
+    }
+
+    console.log(username, email, password, checkPassword, nickname, phone, birthday)
+   }
    
-   setTimeout(() => {
-     container.classList.add('sign-up')
-   
-   }, 200)
+
    
      return (
        <div className="App">
         <div id="container" className="container">
-       {/* <!-- FORM SECTION --> */}
        <div className="row">
-         {/* <!-- SIGN UP --> */}
          <div className="col align-items-center flex-col sign-up">
            <div className="form-wrapper align-items-center">
              <div className="form sign-up">
                <div className="input-group">
                  <i className='bx bxs-user'></i>
-                 <input type="text" placeholder="Username"/>
+                 <input type="text" placeholder="Username" value={username} onChange={usernameChange}/>
                </div>
                <div className="input-group">
                  <i className='bx bx-mail-send'></i>
-                 <input type="email" placeholder="Email"/>
+                 <input type="email" placeholder="Email" value={email} onChange={emailChange}/>
                </div>
                <div className="input-group">
                  <i className='bx bxs-lock-alt'></i>
-                 <input type="password" placeholder="Password"/>
+                 <input type="password" placeholder="Password"  value={password} onChange={passwordChange}/>
                </div>
                <div className="input-group">
                  <i className='bx bxs-lock-alt'></i>
-                 <input type="password" placeholder="Confirm password"/>
+                 <input type="password" placeholder="Confirm password"  value={checkPassword} onChange={checkPasswordChange}/>
                </div>
                <div className="input-group">
                  <i className='bx bxs-lock-alt'></i>
-                 <input type="text" placeholder="Nick name"/>
+                 <input type="text" placeholder="Nickname"  value={nickname} onChange={nicknameChange}/>
                </div>
                <div className="input-group">
                  <i className='bx bxs-lock-alt'></i>
-                 <input type="number" placeholder="Phone number"/>
+                 <input type="number" placeholder="Phone number"  value={phone} onChange={phoneChange}/>
                </div>
                <div className="input-group">
                  <i className='bx bxs-lock-alt'></i>
-                 <input type="text" placeholder="Birthday"/>
+                 <input type="text" placeholder="Birthday"  value={birthday} onChange={birthdayChange}/>
                </div>
-               <button>
+               <button  onClick={handleSignup}>
                  Sign up
                </button>
                <p>
                  <span>
                    Already have an account?
                  </span>
-                 <b onclick="toggle()" className="pointer">
+                 <b onClick={() => navigate(`/`)} className="pointer">
                    Sign in here
                  </b>
                </p>
@@ -64,28 +123,12 @@ const container = document.getElementById('container')
            </div>
          
          </div>
-         {/* <!-- END SIGN UP -->
-         <!-- SIGN IN --> */}
-        
-         {/* <!-- END SIGN IN --> */}
-       </div>
-       {/* <!-- END FORM SECTION -->
-       <!-- CONTENT SECTION --> */}
-       <div className="row content-row">
-         {/* <!-- SIGN IN CONTENT --> */}
-         {/* <div className="col align-items-center flex-col">
-           <div className="text sign-in">
-             <h2>
-               Welcome
-             </h2>
-     
-           </div>
-           <div className="img sign-in">
        
-           </div>
-         </div> */}
-         {/* <!-- END SIGN IN CONTENT -->
-         <!-- SIGN UP CONTENT --> */}
+        
+       </div>
+    
+       <div className="row content-row">
+       
          <div className="col align-items-center flex-col">
            <div className="img sign-up">
            
@@ -97,9 +140,7 @@ const container = document.getElementById('container')
      
            </div>
          </div>
-         {/* <!-- END SIGN UP CONTENT --> */}
        </div>
-       {/* <!-- END CONTENT SECTION --> */}
      </div>
        </div>
      );
