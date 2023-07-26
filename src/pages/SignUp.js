@@ -98,15 +98,15 @@ const handleSignup = () =>{
                </div>
                <div className="input-group">
                  <i className='bx bxs-lock-alt'></i>
-                 <input type="text" placeholder="Nickname"  value={nickname} onChange={nicknameChange}/>
+                 <input type="text" placeholder="Nickname(선택)"  value={nickname} onChange={nicknameChange}/>
                </div>
                <div className="input-group">
                  <i className='bx bxs-lock-alt'></i>
-                 <input type="number" placeholder="Phone number"  value={phone} onChange={phoneChange}/>
+                 <input type="number" placeholder="Phone number(선택)"  value={phone} onChange={phoneChange}/>
                </div>
                <div className="input-group">
                  <i className='bx bxs-lock-alt'></i>
-                 <input type="text" placeholder="Birthday"  value={birthday} onChange={birthdayChange}/>
+                 <input type="text" placeholder="Birthday(선택)"  value={birthday} onChange={birthdayChange}/>
                </div>
                <button  onClick={handleSignup}>
                  Sign up

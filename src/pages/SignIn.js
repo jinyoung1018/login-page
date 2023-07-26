@@ -39,6 +39,18 @@ const SignIn = ()=>{
      return (
        <div className="App">
         <div id="container" className="container">
+        <div className="row content-row">
+         <div className="col align-items-center flex-col">
+           <div className="text sign-in">
+             <h2>
+               Welcome
+             </h2>
+     
+           </div>
+           
+         </div>
+        
+       </div>
        <div className="row">
         
          <div className="col align-items-center flex-col sign-in">
@@ -77,20 +89,7 @@ const SignIn = ()=>{
        
        </div>
      
-       <div className="row content-row">
-         <div className="col align-items-center flex-col">
-           <div className="text sign-in">
-             <h2>
-               Welcome
-             </h2>
-     
-           </div>
-           <div className="img sign-in">
-       
-           </div>
-         </div>
-        
-       </div>
+      
      </div>
        </div>
      );
