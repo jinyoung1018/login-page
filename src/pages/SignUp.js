@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import {  useState } from "react";
+import axios from "axios";
 
 
 const SignUp = () =>{
@@ -69,6 +70,24 @@ const handleSignup = () =>{
     }
 
     console.log(username, email, password, checkPassword, nickname, phone, birthday)
+
+    axios.post('http://localhost:8080/user/register',{
+        username: username,
+        email: email,
+        password: password,
+        nickname:nickname,
+        phone: phone,
+        birthday:birthday
+    })
+    .then((response) =>{
+        localStorage.setItem('token', response.data);
+        alert('회원가입 성공');
+        navigate(`/`);
+    })
+    .catch((error)=>{
+        console.log(error);
+    })
+
    }
    
 
