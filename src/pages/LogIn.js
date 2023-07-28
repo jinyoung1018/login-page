@@ -3,7 +3,7 @@ import {  useState } from "react";
 
 
 
-const SignIn = ()=>{
+const LogIn = ()=>{
    
    const navigate = useNavigate();
 
@@ -30,8 +30,25 @@ const SignIn = ()=>{
         return;
     }
     
+    const userData = {
+        email: email,
+        password: password,
+      };
 
-    console.log( email, password);
+    fetch("http://localhost:8080/user/login", { 
+          method: "post", 
+          headers: {     
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userData), 
+        })
+          .then((res) =>{ 
+            res.json();
+            alert('로그인 성공');
+          });
+         
+
+
    }
 
 
@@ -95,4 +112,4 @@ const SignIn = ()=>{
      );
 }
 
-export default SignIn;
+export default LogIn;

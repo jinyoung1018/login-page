@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import {  useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 
 
 const SignUp = () =>{
@@ -69,24 +69,47 @@ const handleSignup = () =>{
         return;
     }
 
-    console.log(username, email, password, checkPassword, nickname, phone, birthday)
-
-    axios.post('http://localhost:8080/user/register',{
+    // console.log(username, email, password, checkPassword, nickname, phone, birthday)
+    const userData = {
         username: username,
         email: email,
         password: password,
         nickname:nickname,
         phone: phone,
         birthday:birthday
-    })
-    .then((response) =>{
-        localStorage.setItem('token', response.data);
-        alert('회원가입 성공');
-        navigate(`/`);
-    })
-    .catch((error)=>{
-        console.log(error);
-    })
+      };
+
+      fetch("http://localhost:8080/user/register", { 
+          method: "post", 
+          headers: {      
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userData), 
+        })
+          .then((res) => {
+            res.json();
+            alert('회원가입 완료!');
+            navigate(`/`);
+            
+        });
+        
+
+    // axios.post('http://localhost:8080/user/register',{
+    //     username: username,
+    //     email: email,
+    //     password: password,
+    //     nickname:nickname,
+    //     phone: phone,
+    //     birthday:birthday
+    // })
+    // .then((response) =>{
+    //     localStorage.setItem('token', response.data);
+    //     alert('회원가입 성공');
+    //     navigate(`/`);
+    // })
+    // .catch((error)=>{
+    //     console.log(error);
+    // })
 
    }
    
@@ -121,7 +144,7 @@ const handleSignup = () =>{
                </div>
                <div className="input-group">
                  <i className='bx bxs-lock-alt'></i>
-                 <input type="number" placeholder="Phone number(선택)"  value={phone} onChange={phoneChange}/>
+                 <input type="text" placeholder="Phone number(선택)"  value={phone} onChange={phoneChange}/>
                </div>
                <div className="input-group">
                  <i className='bx bxs-lock-alt'></i>
