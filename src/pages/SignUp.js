@@ -64,7 +64,7 @@ const handleSignup = () =>{
         return;
     }
 
-    if(password != checkPassword){
+    if(password !== checkPassword){
         alert('비밀번호가 일치하지않습니다.');
         return;
     }
